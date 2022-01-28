@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kontakt</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stil.css">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("input").focus(function(){
+    $(this).css("background-color", "#f2f2f2");
+    $(this).css("border", "black solid 2px");
+  });
+  $("input").blur(function(){
+    $(this).css("background-color", "#ffffff");
+    $(this).css("border", "#ffffff");
+  });
+});
+
+</script>
+
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_O8KLPd2zweg2CluReKozw');
+        })();
+
+    </script>
+  
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('forma').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                emailjs.sendForm('service_mqj7l05', 'template_n6codxa', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                        alert("Poruka je uspešno poslata!");
+                        location.reload();
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse main-nav  text-center" id="navbarTogglerDemo01">
+    
+    <ul class="justify-content-end navbar-nav mr-auto mt-2 mt-lg-0" >
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Početna <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+       <nobr> <a class="nav-link" href="news.html">Najnovije vesti</a></nobr>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="politics.html">Politika</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="culture.html">Kultura</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="sport.html">Sport</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="contact.html">Kontakt</a>
+      </li>
+   
+    </ul>
+    
+  </div>
+</nav>
+
+
+
+<div class="container ">
+  <div class="row ">
+  <div class="col-md-12 col-lg-12">
+        <form id="forma" method="post">
+          <div class="form-group">
+            <label for="imeunos" > <i class="fas fa-user"></i> Ime i prezime</label>
+            <input type="text" class="form-control" name="posiljaoc" id="imeunos" placeholder="Unesite Vaše ime i prezime" required>
+          </div>
+          <div class="form-group">
+            <label for="unosadrese" ><i class="fas fa-at"></i> E-mail adresa</label>
+            <input type="email" name="email" class="form-control" id="unosadrese" placeholder="Unesite Vašu e-mail adresu" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="unostelefon"> <i class="fas fa-phone"></i> Telefon</label>
+            <input type="tel" name="telefon" class="form-control" id="unostelefon" placeholder="Unesite Vaš br. telefona" required pattern="06\d[-\.]\d\d\d\d\d\d\d">
+          </div>
+
+          <div class="form-group">
+            <label for="unosnaslov" ><i class="fas fa-heading"></i>  Naslov poruke</label>
+            <input type="text" name="naslov" class="form-control" id="unosnaslov" placeholder="Unesite naslov Vaše poruke" required>
+          </div>
+
+
+          <div class="form-group">
+          <label for="comment" ><i class="fas fa-envelope"></i> Poruka:</label>
+          <textarea id="unosporuke" name ="poruka" class="form-control" rows="5" id="comment" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <input type="submit"class="btn btn-info btn-block dugme" value="Pošalji">
+          </div>
+
+          
+        </form>
+
+
+  </div>
+
+
+  <div class="row col-md-12 col-lg-12 mt-3 p-6">
+        <ul class="list-unstyled" style="font-size:1.2em">
+        <li ><strong> <i class="fas fa-map-marker-alt"></i> Adresa: Vojvode Stepe 283, Beograd </strong></li>
+        <li><strong><i class="fas fa-phone"></i> Telefon: 011 3970429  </strong></li>
+        <li><strong><i class="fas fa-at"></i> e-mail: marijanrt517@gs.viser.edu.rs</strong></li>
+      </ul>
+      
+      <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.6132541470456!2d20.477827215405437!3d44.768301579098846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70f8df8b60e1%3A0xd12e2aad5590e385!2z0JLQuNGB0L7QutCwINGI0LrQvtC70LAg0LXQu9C10LrRgtGA0L7RgtC10YXQvdC40LrQtSDQuCDRgNCw0YfRg9C90LDRgNGB0YLQstCwINGB0YLRgNGD0LrQvtCy0L3QuNGFINGB0YLRg9C00LjRmNCwINCR0LXQvtCz0YDQsNC0!5e0!3m2!1ssr!2srs!4v1562782333749!5m2!1ssr!2srs" frameborder="0" style="border:0" width="100%" height="500px" allowfullscreen></iframe>&nbsp;&nbsp;&nbsp;
+      <br><br><br>
+</div>  
+      
+</div>
+
+</div>
+
+<footer class="row bg-dark pt-10">
+          <div class="text-light col-md-12 uFuteru" >
+              <p>
+                      <ul id="menu">
+                       <li><a href="index.html">Početna</a></li>
+                        <li><a href="news.html">Najnovije vesti</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                      </ul>  
+                  </p>
+          <p>&copy; Marija Nikolić NRT-5/17</p>
+        </div>
+  </footer>
+
+
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery.js">
+
+</script>
+<!-- Include all compiled plugins -->
+<script src="js/bootstrap.min.js">
+</script>
+
+
+
+</body>
+
+</html>
